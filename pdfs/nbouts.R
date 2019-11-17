@@ -1,5 +1,5 @@
-nbouts <- function(k, lambda, wc, alpha, log = FALSE){
-    tmp <- -lambda * (wc / alpha) + (k - 1) * log(lambda * (wc / alpha)) - lfactorial(k - 1)
+nbouts <- function(k, lambdaX, wc, alpha, log = FALSE){
+    tmp <- -lambdaX * (wc / alpha) + (k - 1) * log(lambdaX * (wc / alpha)) - lfactorial(k - 1)
     if(log == TRUE){
         return(tmp)
     } else{
