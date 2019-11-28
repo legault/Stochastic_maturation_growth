@@ -16,8 +16,8 @@ Finally, contour plots are used to compare simulations with evaluations.
 
 ## pdfs/
 
-This folder contains all probability mass / density functions associated with the development model. Users interested in solving for the final joint density (i.e., maturation and growth in periods A and B together) will want to use function "jointAB", which relies on all other functions in this folder.
+This folder contains all probability mass / density functions associated with the development model. Users interested in evaluating the final joint density (i.e., maturation and growth in periods A and B together) will want to use function "jointAB", which relies on all other functions in this folder.
 
 ## sim/
 
-This folder contains functions associated with simulating the development model. Function "gillespie_full" is the primary function. Users interested in simulating the development model when parameter values are nonhomogeneous should consider swapping the inter-event sampler "hpp.R" with its nonhomogeneous analog "nhpp" found in the [following repository](https://github.com/legault/SSAplus) 
+This folder contains functions associated with simulating the development model. Function "gillespie_full" is the primary function. Users interested in simulating the development model when parameter values are nonhomogeneous should consider swapping the inter-event time sampler "hpp.R" ("homogeneous Poisson process) with its nonhomogeneous analog "nhpp" (non-homogeneous Poisson process) found in the [following repository](https://github.com/legault/SSAplus) 
