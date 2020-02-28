@@ -1,6 +1,6 @@
 jointAB <- function(z, x, lambdaX, lambdaY, wc, alpha, j, u1, k=50){
     integrate(Vectorize(function(H, z, x, lambdaX, lambdaY, wc, alpha, j, u1, k){
-        nonfeedingA(z - (wc / alpha) - H, lambdaX, lambdaY, wc, alpha, k) * jointB(H, x - wc, j, u1, lambdaY, lambdaX, alpha)
+        nonfeedingA(z - (wc / alpha) - H, lambdaX, lambdaY, wc, alpha, k) * jointB(H, x - wc, j, u1, lambdaX, lambdaY, alpha)
     }),
     z = z,
     x = x,
