@@ -24,11 +24,11 @@ source("sim/onecompartmentINT.R")
 # Set parameters for compartment model
 ## Point process associated with degradation (see gillespie_full)
 pproc <- matrix(c(-1), ncol = 1)
-## Max time for simulation
+## Max time for simulation of part B
 maxtime <- 200
 
-# Number of simulations
-sims <- 1000
+# Number of simulations (adjust as needed)
+sims <- 100000
 # Parameter values
 param <- data.frame(lambdaX = c(1, 2, 4),
                     lambdaY = c(1),
@@ -81,7 +81,7 @@ for(i in 1:nrow(param)){
         }
         tt <- 0 # restart switching clock
         maxtt <- sim.stor[[i]][j, 3]
-        state <- 0
+        state <- 1 # begin in the feeding state
         feed <- 0
         while(tt < maxtt){
             if(state == 0){ # non-feeding
@@ -120,7 +120,7 @@ sim.stor[[3]] <- sim.stor[[3]][, c(5, 6)]
 
 # Estimate joint density of the simulations
 ## Set grid size
-gridsize <- 50 # adjust as needed
+gridsize <- 100 # adjust as needed
 ## Estimate density
 ### Parameter set 1
 jointd1 <- kde2d(x = sim.stor[[1]][, 1],
@@ -139,7 +139,7 @@ jointd3 <- kde2d(x = sim.stor[[3]][, 1],
                  n = gridsize)
 
 # Evaluate the pdfs 
-## WARNING: Takes ~20 minutes with only 1 core. For less time, consider a smaller grid size
+## WARNING: Takes ~20 minutes with several cores. For less time, consider a smaller grid size
 ## Export everything to cluster
 clusterExport(clus, ls())
 ## Set 1
